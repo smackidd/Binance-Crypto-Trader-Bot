@@ -64,7 +64,7 @@ class TestTradingEnv:
             csv_df = pd.concat(frames, keys='time')
             # csv_df = pd.merge(buys_df, sells_df, how='inner', on='time' index='time')
             print(csv_df)
-            csv_df.to_csv('Double Bottoms Crypto Bot Buys_Sells')
+            csv_df.to_csv('Double Bottoms Crypto Bot Buys_Sells.csv')
             print('output to csv')
 
 

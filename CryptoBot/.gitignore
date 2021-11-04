@@ -3,3 +3,6 @@ secret_config.ini
 
 # ignoring the Testing Folder
 Testing Folder/
+
+# ignoring .csv files
+*.csv

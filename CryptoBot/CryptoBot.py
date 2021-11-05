@@ -299,10 +299,10 @@ class Coin:
         return upperBand, lowerBand
 
 
-DURATION = '1m'
+DURATION = '15m'
 COIN_UNIT = 'ETHUSDT'
-STRATEGY = "bollinger bands"
-#STRATEGY = "double bottom"
+#STRATEGY = "bollinger bands"
+STRATEGY = "double bottom"
 coin_kline = Coin(coin_unit=COIN_UNIT)
 #account = TestTradingEnv(0.020773, 'ETHUSDT', trading_fee_multiplier=0.99925)
 account = RealTradingEnv(API_KEY, SECRET_KEY, COIN_UNIT)

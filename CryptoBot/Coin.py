@@ -1,5 +1,9 @@
+from configparser import ConfigParser
 from datetime import datetime
 import pandas as pd
+config_file = 'config.ini'
+config = ConfigParser()
+config.read(config_file)
 
 
 class Coin:
@@ -9,6 +13,9 @@ class Coin:
         self.sma = 0
         self.upper_band = 0
         self.lower_band = 0
+        self.nStandardDeviation = float(
+            config['settings']['N_STANDARD_DEVIATION'])
+        self.rolling_average = float(config['settings']['ROLLING_AVERAGE'])
 
     def get_klines(self, kline_open, kline_close, high, low, open_time, close_time):
         # print('here')
@@ -36,14 +43,14 @@ class Coin:
         # closes = [4289.05, 4281.21, 4280.90, 4275.85, 4277.91, 4285.85, 4292.01, 4288.88, 4287.81, 4281.50,
         #          4277.99, 4273.40, 4271.89, 4272.01, 4271.90, 4277.65, 4280.34, 4285.55, 4292.00, 4295.00]
         closes = []
-        nStandardDeviation = 2
+        nStandardDeviation = self.nStandardDeviation
         for candle in self.candles:
             closes.append(candle['close'])
         # print(closes)
         closes_df = pd.DataFrame(closes)
 
         # rolling window is 21, so don't calculate sma until you have 20 items in array
-        if len(closes) >= 21:
+        if len(closes) >= self.rolling_average:
             closes_df['sma'] = closes_df[0].rolling(window=21).mean()
             self.sma = closes_df['sma'].iloc[-1].astype(float)
             # print(self.sma)

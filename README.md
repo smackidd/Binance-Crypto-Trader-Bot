@@ -11,7 +11,7 @@ Adjust settings in the config file: </br>
 
 You will need to create an API key in your Binance account. Then create an empty secret_config.ini file in the CryptoBot directory. Copy lines 14-15 below and add the API keys to the secret_config.ini file as shown below:</br>
 
-[api]
+[api]</br>
 API_KEY = <your_api_key_goes_here> </br>
 SECRET_KEY = <your_secret_key_goes_here> </br>
 
